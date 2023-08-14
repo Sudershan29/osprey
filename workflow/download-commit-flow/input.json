@@ -2,5 +2,13 @@
     "osprey-worker-endpoint": "7591d0fb-3d12-4ff8-b8fb-7a51146c4871",
     "download-function": "0ed1ddbc-ae82-428c-8431-989a295eaa6a",
     "database-commit-function": "3aa0677e-f729-45ba-895c-adc9937fb276",
-    "tasks": "[{\"endpoint\": \"7591d0fb-3d12-4ff8-b8fb-7a51146c4871\", \"function\": \"0ed1ddbc-ae82-428c-8431-989a295eaa6a\", \"kwargs\": {\"source_id\": 7}}]"
+    "tasks": [
+        {
+            "endpoint": "7591d0fb-3d12-4ff8-b8fb-7a51146c4871",
+            "function": "0ed1ddbc-ae82-428c-8431-989a295eaa6a",
+            "kwargs": {
+                "source_id": 7
+            }
+        }
+    ]
 }

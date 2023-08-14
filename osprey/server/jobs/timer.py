@@ -35,16 +35,16 @@ def set_timer(interval_in_sec: int, id: int, flow_type: FlowEnum) -> None:
     timer_client = TimerClient(authorizer=authorizer, app_name="osprey-prototype")
 
     run_input = {
-                 "osprey-worker-endpoint": Config.GLOBUS_WORKER_UUID,
-                 "download-function": Config.GLOBUS_FLOW_DOWNLOAD_FUNCTION, 
-                 "database-commit-function": Config.GLOBUS_FLOW_COMMIT_FUNCTION,
-                 "tasks": [{
-                     "endpoint": Config.GLOBUS_WORKER_UUID,
-                     "function": Config.GLOBUS_FLOW_DOWNLOAD_FUNCTION,
-                     "kwargs": {
+                    "osprey-worker-endpoint": Config.GLOBUS_WORKER_UUID,
+                    "download-function": Config.GLOBUS_FLOW_DOWNLOAD_FUNCTION, 
+                    "database-commit-function": Config.GLOBUS_FLOW_COMMIT_FUNCTION,
+                    "tasks": [{
+                        "endpoint": Config.GLOBUS_WORKER_UUID,
+                        "function": Config.GLOBUS_FLOW_DOWNLOAD_FUNCTION,
+                        "kwargs": {
                         "source_id": id
-                     }}]
-                 }
+                        }}]
+                    }
 
     run_label = f"Osprey Demo | Source {id}"
 

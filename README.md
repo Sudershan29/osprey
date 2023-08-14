@@ -4,7 +4,11 @@ A prototype for the extraction, storage, validation and distribution of public e
 
 ## Installation
 
-### Server
+1. git clone https://github.com/NSF-RESUME/DSaaS.git osprey 
+
+   Ensure to clone into `osprey` folder
+
+### Running
 
 All the server components are made available within a series of dockerfiles provided in Dockerfile.
 To install the components, the following steps can be followed:
@@ -14,18 +18,19 @@ To install the components, the following steps can be followed:
 
 source scripts/prepare_start.sh
 
-docker compose run 
+    This step involves creating database for the first time, and setting up authentications for globus
+
+# Runs the entire service in background 
+
+docker compose up -d
 
 ```
 
+### Debugging
 
-Clone this repo and install  by running:
-`python -m pip install -e .[dev]`
+docker compose exec <service-name> bash
 
-### Starting the server
-
-Create a ProxyStore endpoint and modify the endpoint ID in `osprey/server/proxies.py`. 
-Then, the server can be started by running `osprey/server/server.py`.
+Eg. docker compose exec web flask shell
 
 ### Using the client.
 

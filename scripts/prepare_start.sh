@@ -16,10 +16,11 @@ echo "\nThe Globus Flow Functions UUIDs are : "
 docker compose run -it globus-endpoint python /app/osprey/worker/lib/globus_flow_helper.py
 
 echo "\n\nRunning migrations"
+docker compose exec -it postgres-database psql -U postgres -c 'create database osprey_development;'
 docker compose run -it web flask db upgrade
 
 echo "\n\nSetting up Globus Flow Worker"
-docker compose run -it web python /app/osprey/server/jobs/timer.py
+docker compose exec -it web python /app/osprey/server/jobs/timer.py
 
 echo "\n\nGo to docker-compose.yml and replace
 

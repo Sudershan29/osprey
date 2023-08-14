@@ -4,7 +4,7 @@ from globus_sdk import NativeAppAuthClient, AccessTokenAuthorizer
 # Permanent
 # OSPREY_DIR = os.path.join(os.path.expanduser("~"), ".local/share/osprey")
 # TODO: Change this 
-OSPREY_DIR = '/Users/sudershan/Documents/GlobusIntern/osprey/'
+OSPREY_DIR = '/app/osprey/server'
 TOKENS_FILE = os.path.join(OSPREY_DIR, "tokens.json")
 
 _TIMER_CLIENT_UUID: str = "524230d7-ea86-4a52-8312-86065a9e0417"
@@ -29,7 +29,6 @@ def authenticate(client: NativeAppAuthClient, scope: str):
     return client.oauth2_exchange_code_for_tokens(auth_code)
 
 def create_token_file(client: NativeAppAuthClient, scope: str | None = None) -> AccessTokenAuthorizer:
-    os.makedirs(OSPREY_DIR, exist_ok=True)
     tokens = authenticate(client, scope)
     timer_access_token = tokens.by_resource_server[_TIMER_CLIENT_UUID]["access_token"]
     authorizer = AccessTokenAuthorizer(access_token=timer_access_token)
@@ -43,4 +42,5 @@ if __name__ == "__main__":
     if not os.path.exists(TOKENS_FILE):
         client = NativeAppAuthClient(client_id=_CLIENT_ID)
         _TIMER_SCOPE = f"https://auth.globus.org/scopes/{_TIMER_CLIENT_UUID}/timer"
-        authenticate(client, _TIMER_SCOPE)
+        create_token_file(client, _TIMER_SCOPE)
+

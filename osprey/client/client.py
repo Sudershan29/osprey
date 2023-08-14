@@ -3,7 +3,7 @@ import requests
 import sys, argparse
 import json
 
-SERVER_ADDRESS = '127.0.0.1:5001'
+SERVER_ADDRESS = '192.5.86.226:5001'
 SERVER_URL = f"http://{SERVER_ADDRESS}/osprey/api/v1.0/"
 
 
